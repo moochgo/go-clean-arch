@@ -27,3 +27,13 @@ func (m *DBs) GetByID(id int) (*models.Customer, error) {
 	}
 	return &customer, nil
 }
+
+// FindAll ...
+func (m *DBs) FindAll() ([]*models.Customer, error) {
+	customers := []*models.Customer{}
+	err := m.Customer.Where("deleted = 0").Find(&customers).Error
+	if err != nil {
+		return nil, err
+	}
+	return customers, nil
+}

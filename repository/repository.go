@@ -7,4 +7,5 @@ import (
 // CustomerRepository : Customer repository ...
 type CustomerRepository interface {
 	GetByID(id int) (*models.Customer, error)
+	FindAll() (customer []*models.Customer, err error)
 }

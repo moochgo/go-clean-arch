@@ -18,5 +18,6 @@ func Run(appName string, port string, rHandler ControllerHandler) {
 	}
 	app := fiber.New()
 	app.Get("/", handler.CusHandler.GetCustomerByID)
+	app.Get("/all", handler.CusHandler.FindAll)
 	app.Listen("0.0.0.0:" + port)
 }

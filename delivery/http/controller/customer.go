@@ -28,3 +28,14 @@ func (cus *CustomerHandler) GetCustomerByID(c *fiber.Ctx) {
 	srv.ResponseRender("success", c, http.StatusOK, customer)
 	return
 }
+
+// FindAll ...
+func (cus *CustomerHandler) FindAll(c *fiber.Ctx) {
+	customers, _ := cus.CusUsecase.FindAll()
+	if customers == nil {
+		srv.ResponseRender("success", c, http.StatusOK, "Data tidak ditemukan")
+		return
+	}
+	srv.ResponseRender("success", c, http.StatusOK, customers)
+	return
+}

@@ -25,3 +25,12 @@ func (cus *customerUsecase) GetByID(id int) (*models.Customer, error) {
 	}
 	return customer, nil
 }
+
+// FindAll ...
+func (cus *customerUsecase) FindAll() (customer []*models.Customer, err error) {
+	customers, err := cus.customerRepo.FindAll()
+	if err != nil {
+		return nil, err
+	}
+	return customers, nil
+}
